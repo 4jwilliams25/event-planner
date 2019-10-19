@@ -9,6 +9,12 @@ exports.up = function(knex) {
       .references("id")
       .inTable("users")
       .onDelete("CASCADE");
+    table.boolean("completed").notNullable;
+    table
+      .integer("creator_id")
+      .references("id")
+      .inTable("users")
+      .onDelete("CASCADE").notNullable;
     table.timestamps(true, true);
   });
 };
